@@ -12,6 +12,15 @@ from huffman import (
 
 
 def decompress(file_path):
+    """
+    Decompresses a file using Huffman encoding.
+
+    Args:
+        file_path (str): Path to the compressed file.
+
+    Returns:
+        str: Path to the decompressed file.
+    """
     filename, file_extension = os.path.splitext(file_path)
     output_path = filename + "_decompressed.txt"
 
@@ -34,6 +43,16 @@ def decompress(file_path):
 
 
 def decode_text(encoded_text, reverse_mapping):
+    """
+    Decodes the encoded text using a reverse mapping.
+
+    Args:
+        encoded_text (str): Encoded text to be decoded.
+        reverse_mapping (dict): Reverse mapping of Huffman codes.
+
+    Returns:
+        str: Decoded text.
+    """
     decoded_text = ""
     current_code = ""
     for bit in encoded_text:
@@ -46,6 +65,15 @@ def decode_text(encoded_text, reverse_mapping):
 
 
 def compress(file_path):
+    """
+    Compresses a file using Huffman encoding.
+
+    Args:
+        file_path (str): Path to the file to be compressed.
+
+    Returns:
+        str: Path to the compressed file.
+    """
     filename, file_extension = os.path.splitext(file_path)
     output_path = filename + "_compressed.bin"
 
@@ -71,7 +99,17 @@ def compress(file_path):
     return output_path
 
 
-def compress_or_decompress(file_name, operation):
+def compress_or_decompress(file_name, operation: str):
+    """
+    Compresses or decompresses a file based on the operation provided.
+
+    Args:
+        file_name (str): File name to be compressed or decompressed.
+        operation (str): Operation: 'encode' or 'decode'.
+
+    Returns:
+        str: Path to the compressed or decompressed file.
+    """
     if operation.lower() == "encode":
         return compress(file_name)
     elif operation.lower() == "decode":
